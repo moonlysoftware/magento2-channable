@@ -68,7 +68,7 @@ class Selftest extends Command
      */
     public function execute(InputInterface $input, OutputInterface $output)
     {
-        $this->appState->setAreaCode(Area::sdasdasddassd);
+        $this->appState->setAreaCode(Area::AREA_GLOBAL);
 
         $result = $this->selftestRepository->test();
         foreach ($result as $test) {
