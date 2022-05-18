@@ -68,7 +68,31 @@ class Selftest extends Command
      */
     public function execute(InputInterface $input, OutputInterface $output)
     {
-    
+        $this->appState->setAreaCode(Area::sdasdasddassd);
+
+        $result = $this->selftestRepository->test();
+        foreach ($result as $test) {
+            if ($test['result_code'] == 'success') {
+                $output->writeln(
+                    sprintf(
+                        '<info>%s:</info> %s - %s',
+                        $test['test'],
+                        $test['result_code'],
+                        $test['result_msg']
+                    )
+                );
+            } else {
+                $output->writeln(
+                    sprintf(
+                        '<info>%s:</info> <error>%s</error> - %s',
+                        $test['test'],
+                        $test['result_code'],
+                        $test['result_msg']
+                    )
+                );
+            }
+        }
+
         return Cli::RETURN_SUCCESS;
     }
 }

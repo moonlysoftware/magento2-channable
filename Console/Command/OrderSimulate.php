@@ -110,7 +110,29 @@ class OrderSimulate extends Command
      */
     public function execute(InputInterface $input, OutputInterface $output)
     {
-    
+        if (!$input->getOption(self::INPUT_KEY_STORE_ID)) {
+            throw new \InvalidArgumentException('Please add ' . self::INPUT_KEY_STORE_ID . ' param.');
+        } else {
+            $storeId = (int)$input->getOption(self::INPUT_KEY_STORE_ID);
+        }
+
+        try {
+            $this->appState->setAreaCode(Area::AREA_FRONTEND);
+            $order = $this->importSimulator->execute(
+                $storeId,
+                $this->getOptions($input)
+            );
+
+            $output->writeln(
+                sprintf('<info>Test order #%s created</info>', $order->getIncrementId())
+            );
+            return Cli::RETURN_SUCCESS;
+        } catch (\Exception $exception) {
+            $output->writeln(
+                sprintf('<error>%s</error>', $exception->getMessage())
+            );
+            return Cli::RETURN_FAILURE;
+        }
     }
 
     /**
