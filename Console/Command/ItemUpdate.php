@@ -78,33 +78,33 @@ class ItemUpdate extends Command
      */
     public function execute(InputInterface $input, OutputInterface $output)
     {
-        $storeId = $input->getOption('store-id');
-        $this->appState->setAreaCode('frontend');
-        $itemModel = $this->itemFactory->create();
+        // $storeId = $input->getOption('store-id');
+        // $this->appState->setAreaCode('frontend');
+        // $itemModel = $this->itemFactory->create();
 
-        if (empty($storeId) || !is_numeric($storeId)) {
-            $output->writeln('<info>Running All Stores</info>');
-            $storeIds = $this->generalHelper->getEnabledArray('magmodules_channable_marketplace/item/enable');
-            foreach ($storeIds as $storeId) {
-                $result = $itemModel->updateByStore($storeId);
-                $msg = sprintf(
-                    'Store ID: %s - %s - Products: %s',
-                    $storeId,
-                    $result['status'],
-                    $result['qty']
-                );
-                $output->writeln($msg);
-            }
-        } else {
-            $output->writeln('<info>Running Store ' . $storeId . '</info>');
-            $result = $itemModel->updateByStore($storeId);
-            $msg = sprintf(
-                'Store ID: %s - %s - Products: %s',
-                $storeId,
-                $result['status'],
-                $result['qty']
-            );
-            $output->writeln($msg);
-        }
+        // if (empty($storeId) || !is_numeric($storeId)) {
+        //     $output->writeln('<info>Running All Stores</info>');
+        //     $storeIds = $this->generalHelper->getEnabledArray('magmodules_channable_marketplace/item/enable');
+        //     foreach ($storeIds as $storeId) {
+        //         $result = $itemModel->updateByStore($storeId);
+        //         $msg = sprintf(
+        //             'Store ID: %s - %s - Products: %s',
+        //             $storeId,
+        //             $result['status'],
+        //             $result['qty']
+        //         );
+        //         $output->writeln($msg);
+        //     }
+        // } else {
+        //     $output->writeln('<info>Running Store ' . $storeId . '</info>');
+        //     $result = $itemModel->updateByStore($storeId);
+        //     $msg = sprintf(
+        //         'Store ID: %s - %s - Products: %s',
+        //         $storeId,
+        //         $result['status'],
+        //         $result['qty']
+        //     );
+        //     $output->writeln($msg);
+        // }
     }
 }
