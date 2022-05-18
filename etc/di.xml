@@ -182,29 +182,4 @@
         </arguments>
     </type>
     <!-- Channable Selftest Block End -->
-
-    <!-- Proxy block start -->
-    <type name="Magmodules\Channable\Console\Command\ItemUpdate">
-        <arguments>
-            <argument name="generalHelper" xsi:type="object">Magmodules\Channable\Helper\General\Proxy</argument>
-        </arguments>
-    </type>
-    <type name="Magmodules\Channable\Console\Command\Selftest">
-        <arguments>
-            <argument name="selftestRepository" xsi:type="object">Magmodules\Channable\Model\Selftest\Repository\Proxy</argument>
-        </arguments>
-    </type>
-    <!-- Proxy block start -->
-
-    <!-- Command line block start -->
-    <type name="Magento\Framework\Console\CommandList">
-        <arguments>
-            <argument name="commands" xsi:type="array">
-                <item name="ChannableSelftest" xsi:type="object">Magmodules\Channable\Console\Command\Selftest</item>
-                <item name="ChannableSOrderSimulate" xsi:type="object">Magmodules\Channable\Console\Command\OrderSimulate</item>
-                <item name="ChannableItemUpdate" xsi:type="object">Magmodules\Channable\Console\Command\ItemUpdate</item>
-            </argument>
-        </arguments>
-    </type>
-    <!-- Command line block end -->
 </config>
